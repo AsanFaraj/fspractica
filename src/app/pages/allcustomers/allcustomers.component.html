@@ -1,0 +1,9 @@
+<h4>Customers</h4>
+<!-- route that goes to search customer component -->
+<a [routerLink]="['/search-customer']">Search Customer</a>
+<ul>
+    <li class="text" *ngFor="let item of items | async">
+      {{item | json}}
+      <button (click)="deleteCustomer(item.id)">Delete</button>
+    </li>
+  </ul>

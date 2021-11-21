@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "practica1asan": {
+      "hosting": {
+        "fspractica": [
+          "practica1asan"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "practica1asan"
+  }
+}

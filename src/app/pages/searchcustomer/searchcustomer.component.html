@@ -1,0 +1,113 @@
+<a [routerLink]="['']">All Customers</a>
+
+
+<h4>Search for customer</h4>
+
+
+<!-- input for id -->
+<div class="form-group">
+    <label for="id">Customer ID</label>
+    <input [(ngModel)]="idCustomer" type="text" class="form-control" id="id" name="id" placeholder="Enter customer ID">
+
+    <button (click)="getCustomerById(idCustomer)" class="btn btn-primary">Search</button>
+</div>
+
+<div *ngIf="user">
+    <h4>Customer found</h4>
+    {{user | async | json}}}} 
+</div>
+
+
+<h4>Search for customer's products</h4>
+
+
+<!-- input for id -->
+<div class="form-group">
+    <label >Customer ID</label>
+    <input [(ngModel)]="idCustomer2" class="form-control" placeholder="Enter customer ID">
+
+    <button (click)="getCustomerProducts()" class="btn btn-primary">Search</button>
+</div>
+
+    <h4>products found</h4>
+    <ul>
+        <li class="text" *ngFor="let item of products | async">
+          {{item | json}}
+          <button (click) ="deleteProduct(item.id)">Delete</button>
+        </li>
+      </ul>
+   
+
+<h4>Search for customer by age</h4>
+
+
+<!-- input for id -->
+<div class="form-group">
+    <label for="age">Volwassen klanten</label>
+    <button (click)=" getAdults()" class="btn btn-primary">Search</button>
+</div>
+
+<div class="form-group">
+    <label for="age">Jonge klanten</label>
+    <button (click)=" getChildren()" class="btn btn-primary">Search</button>
+</div>
+
+<ul>
+    <li class="text" *ngFor="let item of filteredCustomers | async">
+      {{item | json}}
+
+    </li>
+  </ul>
+
+
+  <!-- input for id -->
+  <h4>Add product to customer</h4>
+<div class="form-group">
+    <label for="id">Customer ID</label>
+    <input [(ngModel)]="idCustomer3" type="text" class="form-control" id="id" name="id" placeholder="Enter customer ID">
+    <input [(ngModel)]="productName" type="text" class="form-control" id="id" name="id" placeholder="Enter productname">
+    <input [(ngModel)]="price" type="text" class="form-control" id="id" name="id" placeholder="Enter price">
+
+    <button (click)="addProduct()" class="btn btn-primary">Add</button>
+</div>
+
+
+
+
+<h4>Add customer</h4>
+<div class="form-group">
+    <label for="id">New customer</label>
+    <input [(ngModel)]="customerName" type="text" class="form-control" id="id" name="id" placeholder="Enter a name">
+    <input [(ngModel)]="customerAge" type="text" class="form-control" id="id" name="id" placeholder="Enter age">
+
+    <button (click)="addCustomer()" class="btn btn-primary">Add</button>
+</div>
+
+
+
+<h4>Get a customer's expensive items (price is above 20) </h4>
+<div class="form-group">
+    <label >Customer ID</label>
+    <input [(ngModel)]="idCustomer4" class="form-control" placeholder="Enter customer ID">
+
+    <button (click)="getExpensiveOrders()" class="btn btn-primary">Search</button>
+</div>
+
+
+    <h4>expensive items</h4>
+    <ul>
+        <li class="text" *ngFor="let item of expensiveOrders | async">
+          {{item | json}}
+        </li>
+      </ul>
+
+
+<h4>Get all expensive orders (price is above 20) </h4>
+<div class="form-group">
+    <button (click)="getAllExpensiveOrders()" class="btn btn-primary">Search</button>
+</div>
+<ul>
+    <li class="text" *ngFor="let item of allExpensiveOrders | async">
+      {{item | json}}
+    </li>
+  </ul>
